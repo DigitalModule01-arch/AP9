@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="tl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Araling Panlipunan 9 - Modyul 2</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Link sa hiwalay na CSS file -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- MODERN LOGIN OVERLAY -->
+    <div id="login-overlay">
+        <div class="login-card-wrapper">
+            <div class="login-card">
+                <div class="login-badge">Interactive Module</div>
+                <h2>Araling Panlipunan 9</h2>
+                <p>I-verify ang iyong pagkakakilanlan bago simulan ang modyul.</p>
+                <form onsubmit="handleLogin(event)">
+                    <div class="input-group">
+                        <label for="input-name">Buong Pangalan</label>
+                        <input type="text" id="input-name" class="login-input" placeholder="Hal: Juan Dela Cruz" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="input-section">Seksiyon</label>
+                        <input type="text" id="input-section" class="login-input" placeholder="Hal: 9-Newton" required>
+                    </div>
+                    <button type="submit" class="login-btn">Mag Log-In</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- HEADER & NAVIGATION -->
+    <header>
+        <div class="logo">AP Modyul 2</div>
+        <div id="display-student-info" class="student-info-display">Mag-aaral</div>
+        <nav>
+            <a onclick="openModal('layunin')">Layunin</a>
+            <a onclick="openModal('balikan')">Balikan (Puzzle)</a>
+            <a onclick="openModal('tuklasin')">Tuklasin</a>
+            <a onclick="openModal('konsepto')">Konsepto</a>
+            <a onclick="openModal('pagyamanin')">Pagyamanin</a>
+        </nav>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="hero-section">
+        <h1 class="hero-title">Mga Konsepto at Salik na Nakaaapekto sa Suplay</h1>
+        <p class="hero-subtitle">Araling Panlipunan 9 • MARY ANN A. PASTRANA</p>
+    </section>
+
+    <!-- CARDS CONTAINER (May kasamang card-1 hanggang card-5 para lumitaw ang background images) -->
+    <div class="cards-container">
+        <div class="card card-1" onclick="openModal('layunin')">
+            <div class="card-content">
+                <div class="card-category">Aralin 1</div>
+                <div class="card-title">Layunin</div>
+            </div>
+        </div>
+
+        <div class="card card-2" onclick="openModal('balikan')">
+            <div class="card-content">
+                <div class="card-category">Subukin</div>
+                <div class="card-title">Balikan: Word Puzzle Game</div>
+            </div>
+        </div>
+
+        <div class="card card-3" onclick="openModal('tuklasin')">
+            <div class="card-content">
+                <div class="card-category">Aktiviti</div>
+                <div class="card-title">Tuklasin: 4 Pics 1 Word</div>
+            </div>
+        </div>
+
+        <div class="card card-4" onclick="openModal('konsepto')">
+            <div class="card-content">
+                <div class="card-category">Leksyon</div>
+                <div class="card-title">Konsepto at Batas ng Suplay</div>
+            </div>
+        </div>
+
+        <div class="card card-5" onclick="openModal('pagyamanin')">
+            <div class="card-content">
+                <div class="card-category">Pagtatasa</div>
+                <div class="card-title">Pagyamanin at Gawain</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL CONTAINER -->
+    <div id="modal" class="content-modal">
+        <span class="close-btn" onclick="closeModal()">✕ Isara</span>
+        <div class="modal-body">
+            
+            <!-- LAYUNIN -->
+ <div id="content-layunin" class="modal-section" style="display:none;">
+    <h1 style="font-family:'Playfair Display'; margin-bottom:0.5rem; color:#ffffff;">Mga Layunin sa Pagkatuto</h1>
+    <p style="color:#9ca3af; margin-bottom:1.5rem; font-size:0.95rem;">Pagkatapos ng araling ito, ang mga mag-aaral ay inaasahang magagawa ang mga sumusunod:</p>
+    <hr style="border-color:#374151; margin-bottom:2rem;">
+
+    <div style="display: flex; flex-direction: column; gap: 1rem; margin-bottom: 2rem;">
+        <div class="concept-card" style="border-left: 4px solid #3b82f6;">
+            <p style="color: #d1d5db; font-size: 1rem; line-height: 1.6; margin: 0;">
+                <strong style="color: #60a5fa;">A.</strong> Nasusuri ang mga salik na nakaaapekto sa suplay.
+            </p>
+        </div>
+        <div class="concept-card" style="border-left: 4px solid #3b82f6;">
+            <p style="color: #d1d5db; font-size: 1rem; line-height: 1.6; margin: 0;">
+                <strong style="color: #60a5fa;">B.</strong> Matalinong nakapagpapasya sa pagtugon sa mga pagbabago ng salik na nakaaapekto sa suplay.
+            </p>
+        </div>
+    </div>
+</div>
+
+            <!-- BALIKAN -->
+            <div id="content-balikan" class="modal-section" style="display:none;">
+                <h1 style="font-family:'Playfair Display'; margin-bottom:1rem;">Balikan: Nasa Kahon Ang Sagot</h1>
+                <hr style="border-color:#374151; margin-bottom:1rem;">
+                <p><strong>Panuto:</strong> I-click ang mga letra sa puzzle para mabuo ang mga salitang may kaugnayan sa aralin.</p>
+                <div class="puzzle-wrapper">
+                    <div class="grid-container" id="grid"></div>
+                    <div class="word-list">
+                        <h3>Mga Hahanaping Salita:</h3>
+                        <div id="word-DEMAND" class="word-item">• DEMAND</div>
+                        <div id="word-CURVE" class="word-item">• CURVE</div>
+                        <div id="word-KITA" class="word-item">• KITA</div>
+                        <div id="word-FUNCTION" class="word-item">• FUNCTION</div>
+                        <button class="submit-btn" onclick="initPuzzle()" style="width:100%; margin-top:1.5rem;">Reset Puzzle</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TUKLASIN -->
+            <div id="content-tuklasin" class="modal-section" style="display:none;">
+                <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.5rem;">
+                    <h1 style="font-family:'Playfair Display'; color:#fff;">Gawain 2: 4 Pics 1 Word</h1>
+                    <span class="concept-badge">🎮 Digital Game</span>
+                </div>
+                <p style="color:#9ca3af; margin-bottom:1.5rem;"><strong>Panuto:</strong> Hulaan ang tamang salita gamit ang apat na larawan. I-type ang mga kulang na letra sa loob ng mga kahon.</p>
+                <hr style="border-color:#374151; margin-bottom:1.5rem;">
+
+                 <div class="game-grid">
+                    <!-- Card 1: PANINDA -->
+                    <div class="game-card">
+                        <div class="four-pics-container">
+                            <div class="pic-box" style="background-image: url('https://images.unsplash.com/photo-1610832958506-aa56368176cf?auto=format&fit=crop&w=300&q=80');"></div>
+                            <div class="pic-box" style="background-image: url('https://images.unsplash.com/photo-1578916171728-46686eac8d58?auto=format&fit=crop&w=300&q=80');"></div>
+                            <div class="pic-box" style="background-image: url('https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&w=300&q=80');"></div>
+                            <div class="pic-box" style="background-image: url('https://images.unsplash.com/photo-1534723452862-4c874018d66d?auto=format&fit=crop&w=300&q=80');"></div>
+                        </div>
+                        <div class="letter-inputs" data-answer="PANINDA">
+                            <input class="letter-box given" value="P" readonly>
+                            <input class="letter-box" maxlength="1" onkeyup="checkAnswer(this)">
+                            <input class="letter-box given" value="N" readonly>
+                            <input class="letter-box" maxlength="1" onkeyup="checkAnswer(this)">
+                            <input class="letter-box given" value="N" readonly>
+                            <input class="letter-box" maxlength="1" onkeyup="checkAnswer(this)">
+                            <input class="letter-box given" value="A" readonly>
+                        </div>
+                        <div class="card-status"></div>
+                    </div>
+
+                    <!-- Card 2: NEGOSYANTE -->
+                    <div class="game-card">
+                        <div class="four-pics-container">
+                            <div class="pic-box" style="background-image: url('https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=300&q=80');"></div>
+                            <div class="pic-box" style="background-image: url('https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=300&q=80');"></div>
+                            <div class="pic-box" style="background-image: url('https://images.unsplash.com/photo-1556761175-5973dc0f32e7?auto=format&fit=crop&w=300&q=80');"></div>
+                            <div class="pic-box" style="background-image: url('https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=300&q=80');"></div>
+                        </div>
+                        <div class="letter-inputs" data-answer="NEGOSYANTE">
+                            <input class="letter-box given" value="N" readonly>
+                            <input class="letter-box given" value="E" readonly>
+                            <input class="letter-box" maxlength="1" onkeyup="checkAnswer(this)">
+                            <input class="letter-box" maxlength="1" onkeyup="checkAnswer(this)">
+                            <input class="letter-box given" value="S" readonly>
+                            <input class="letter-box given" value="Y" readonly>
+                            <input class="letter-box" maxlength="1" onkeyup="checkAnswer(this)">
+                            <input class="letter-box" maxlength="1" onkeyup="checkAnswer(this)">
+                            <input class="letter-box" maxlength="1" onkeyup="checkAnswer(this)">
+                            <input class="letter-box given" value="E" readonly>
+                        </div>
+                        <div class="card-status"></div>
+                    </div>
+
+                    <!-- Card 3: PAMILIHAN -->
+                    <div class="game-card">
+                        <div class="four-pics-container">
+                            <div class="pic-box" style="background-image: url('https://images.unsplash.com/photo-1488459716781-31db52582fe9?auto=format&fit=crop&w=300&q=80');"></div>
+                            <div class="pic-box" style="background-image: url('https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=300&q=80');"></div>
+                            <div class="pic-box" style="background-image: url('https://images.unsplash.com/photo-1533900298318-6b8da08a523e?auto=format&fit=crop&w=300&q=80');"></div>
+                            <div class="pic-box" style="background-image: url('https://images.unsplash.com/photo-1578916171728-46686eac8d58?auto=format&fit=crop&w=300&q=80');"></div>
+                        </div>
+                        <div class="letter-inputs" data-answer="PAMILIHAN">
+                            <input class="letter-box given" value="P" readonly>
+                            <input class="letter-box given" value="A" readonly>
+                            <input class="letter-box" maxlength="1" onkeyup="checkAnswer(this)">
+                            <input class="letter-box given" value="I" readonly>
+                            <input class="letter-box" maxlength="1" onkeyup="checkAnswer(this)">
+                            <input class="letter-box given" value="I" readonly>
+                            <input class="letter-box" maxlength="1" onkeyup="checkAnswer(this)">
+                            <input class="letter-box given" value="A" readonly>
+                            <input class="letter-box" maxlength="1" onkeyup="checkAnswer(this)">
+                        </div>
+                        <div class="card-status"></div>
+                    </div>
+
+                    <!-- Card 4: PABRIKA -->
+                    <div class="game-card">
+                        <div class="four-pics-container">
+                            <div class="pic-box" style="background-image: url('https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=300&q=80');"></div>
+                            <div class="pic-box" style="background-image: url('https://images.unsplash.com/photo-1565610222536-ef125c59da2e?auto=format&fit=crop&w=300&q=80');"></div>
+                            <div class="pic-box" style="background-image: url('https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=300&q=80');"></div>
+                            <div class="pic-box" style="background-image: url('https://images.unsplash.com/photo-1513828583688-c52646db42da?auto=format&fit=crop&w=300&q=80');"></div>
+                        </div>
+                        <div class="letter-inputs" data-answer="PABRIKA">
+                            <input class="letter-box given" value="P" readonly>
+                            <input class="letter-box" maxlength="1" onkeyup="checkAnswer(this)">
+                            <input class="letter-box given" value="B" readonly>
+                            <input class="letter-box" maxlength="1" onkeyup="checkAnswer(this)">
+                            <input class="letter-box given" value="I" readonly>
+                            <input class="letter-box" maxlength="1" onkeyup="checkAnswer(this)">
+                            <input class="letter-box" maxlength="1" onkeyup="checkAnswer(this)">
+                        </div>
+                        <div class="card-status"></div>
+                    </div>
+                </div>
+
+                <div class="concept-card" style="margin-top:1.5rem;">
+                    <h3 style="color:#60a5fa; margin-bottom:0.8rem;">Pamprosesong Tanong:</h3>
+                    <ol style="line-height:1.8; margin-left:1.2rem; color:#d1d5db;">
+                        <li>Ano-ano ang salitang nabuo mula sa mga larawan?</li>
+                        <li>Anong konsepto ang mabubuo mo batay sa mga larawan?</li>
+                        <li>Paano mo maiuugnay ang mabubuo mong konsepto sa mga prodyuser?</li>
+                    </ol>
+                </div>
+            </div>
+                
+ <!-- KONSEPTO -->
+            <div id="content-konsepto" class="modal-section" style="display:none;">
+                <h1 style="font-family:'Playfair Display'; margin-bottom:0.5rem; color:#ffffff;">A. Konsepto ng Suplay</h1>
+                <hr style="border-color:#374151; margin-bottom:1.5rem;">
+
+                <!-- Gabay na Video -->
+                <div class="concept-card">
+                    <span class="concept-badge">Gabay na Video</span>
+                    <p style="color:#d1d5db; margin-bottom:1rem;">Panoorin ang maikling video na ito bago talakayin ang mga konsepto at salik na nakaaapekto sa suplay:</p>
+                    <iframe src="https://www.youtube.com/embed/eoSsFYdbFSw" title="Konsepto ng Suplay Video" allowfullscreen></iframe>
+                </div>
+
+                <!-- Kahulugan ng Suplay -->
+                <div class="concept-card">
+                    <span class="concept-badge">Kahulugan ng Suplay</span>
+                    <p style="color:#d1d5db; line-height:1.6;">
+                        Ang suplay ay tumutukoy sa dami ng produkto at serbisyo na handa at kayang ipagbili ng mga prodyuser sa iba’t ibang presyo sa isang takdang panahon[cite: 11].
+                    </p>
+                </div>
+
+                <!-- Ang Batas ng Suplay -->
+                <div class="concept-card">
+                    <span class="concept-badge">Ang Batas ng Suplay</span>
+                    <p style="color:#d1d5db; line-height:1.6; margin-bottom:0.8rem;">
+                        Ayon sa Batas ng Suplay, kapag tumataas ang presyo, tumataas din ang dami ng produkto o serbisyo na handa at kayang ipagbili[cite: 11].
+                    </p>
+                    <p style="color:#d1d5db; line-height:1.6; margin-bottom:0.8rem;">
+                        Ang <em>ceteris paribus</em> ay nangangahulugang habang ang presyo lamang ang nagbabago, ang ibang salik ay ipinapalagay na hindi nagbabago[cite: 11].
+                    </p>
+                    <p style="color:#d1d5db; line-height:1.6;">
+                        Ipinapakita ng batas na ito na ang presyo ng produkto o serbisyo sa pamilihan ang pangunahing batayan ng prodyuser sa paglikha. Dahil dito, higit ang kanilang pagnanais na magbenta ng marami kapag mataas ang presyo[cite: 11].
+                    </p>
+                </div>
+
+                <h3 style="color:#60a5fa; margin:1.5rem 0 1rem 0;">Tatlong Paraan upang Maipakita ang Ugnayan ng Presyo at Suplay[cite: 11]</h3>
+
+                <!-- 1. Supply Schedule -->
+                <div class="concept-card">
+                    <h4 style="color:#38bdf8; margin-bottom:0.5rem;">Supply Schedule</h4>
+                    <p style="color:#9ca3af; margin-bottom:1rem;">Ang supply schedule ay isang talaan na nagpapakita ng dami ng kaya at gustong ipagbili ng mga prodyuser sa iba’t ibang presyo[cite: 11].</p>
+                    
+                    <p style="font-weight:600; color:#fff; margin-bottom:0.5rem;">Hal. Supply Schedule ng Kendi[cite: 11]</p>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Presyo (piso bawat piraso)[cite: 11]</th>
+                                <th>Quantity Supplied[cite: 11]</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>Php 5.00</td><td>50</td></tr>
+                            <tr><td>4.00</td><td>40</td></tr>
+                            <tr><td>3.00</td><td>30</td></tr>
+                            <tr><td>2.00</td><td>20</td></tr>
+                            <tr><td>1.00</td><td>10</td></tr>
+                            <tr><td>0</td><td>0</td></tr>
+                        </tbody>
+                    </table>
+                    <p style="color:#d1d5db; font-size:0.95rem; line-height:1.6; margin-top:1rem;">
+                        Ang iskedyul na makikita sa talahanayan ay tumutukoy sa quantity supplied para sa kendi sa iba’t ibang presyo. Halimbawa, sa halagang piso (Php 1.00) bawat piraso ng kendi, sampu (10) lamang ang dami ng handa at kayang ipagbili ng mga prodyuser. Malinaw na ipinapakita ang direktang ugnayan ng presyo at quantity supplied ng kendi para sa prodyuser[cite: 11].
+                    </p>
+                </div>
+
+                <!-- 2. Supply Curve -->
+                <div class="concept-card">
+                    <h4 style="color:#38bdf8; margin-bottom:0.5rem;">Supply Curve</h4>
+                    <p style="color:#9ca3af; margin-bottom:1rem;">Ang supply curve ay isang grapikong paglalarawan ng ugnayan ng presyo at quantity supplied[cite: 11].</p>
+                    
+                    <div class="graph-container" style="margin-bottom:1rem;">
+                        <svg width="340" height="240" viewBox="0 0 340 240" style="background:#111827; border-radius:8px; border:1px solid #374151;">
+                            <line x1="50" y1="30" x2="50" y2="200" stroke="#4b5563" stroke-width="2"/>
+                            <line x1="50" y1="200" x2="310" y2="200" stroke="#4b5563" stroke-width="2"/>
+                            <line x1="50" y1="200" x2="290" y2="40" stroke="#ef4444" stroke-width="3"/>
+                            <circle cx="50" cy="200" r="5" fill="#ef4444"/>
+                            <circle cx="98" cy="168" r="5" fill="#ef4444"/>
+                            <circle cx="146" cy="136" r="5" fill="#ef4444"/>
+                            <circle cx="194" cy="104" r="5" fill="#ef4444"/>
+                            <circle cx="242" cy="72" r="5" fill="#ef4444"/>
+                            <circle cx="290" cy="40" r="5" fill="#ef4444"/>
+                            <text x="20" y="45" fill="#9ca3af" font-size="12">5</text>
+                            <text x="20" y="77" fill="#9ca3af" font-size="12">4</text>
+                            <text x="20" y="109" fill="#9ca3af" font-size="12">3</text>
+                            <text x="20" y="141" fill="#9ca3af" font-size="12">2</text>
+                            <text x="20" y="173" fill="#9ca3af" font-size="12">1</text>
+                            <text x="20" y="205" fill="#9ca3af" font-size="12">0</text>
+                            <text x="90" y="220" fill="#9ca3af" font-size="12">10</text>
+                            <text x="138" y="220" fill="#9ca3af" font-size="12">20</text>
+                            <text x="186" y="220" fill="#9ca3af" font-size="12">30</text>
+                            <text x="234" y="220" fill="#9ca3af" font-size="12">40</text>
+                            <text x="282" y="220" fill="#9ca3af" font-size="12">50</text>
+                            <text x="295" y="35" fill="#ef4444" font-size="14" font-weight="bold">S</text>
+                        </svg>
+                    </div>
+
+                    <p style="color:#d1d5db; font-size:0.95rem; line-height:1.6;">
+                        Ang graph sa itaas ay batay sa supply schedule na nasa talahanayan. Kung ilalapat sa graph ang iba’t ibang kombinasyon ng mga presyo at quantity supplied ay mabubuo ang supply curve para dito. Halimbawa, sa Punto B presyo ng kendi sa piso, ang presyo ay piso (Php 1), sampu (10) ang dami ng kendi na gusto at handang ipagbili ng prodyuser; sa punto C na ang presyo ay dalawang piso (Php 2), dalawampu (20) ang dami ng kendi na gusto at handang ipagbili ng prodyuser. Kung tutuntunin ang mga puntong ito hanggang punto F ay makabubuo ng isang kurbang pataas o upward sloping curve. Ang kurbang ito ay nagpapakita ng direktang ugnayan sa pagitan ng presyo at sa dami ng gusto at handang ipagbili ng mga mamimili[cite: 12].
+                    </p>
+                </div>
+
+                <!-- 3. Supply Function -->
+                <div class="concept-card">
+                    <h4 style="color:#38bdf8; margin-bottom:0.5rem;">Supply Function</h4>
+                    <p style="color:#9ca3af; margin-bottom:1rem;">Ang supply function ay isa ring paraan ng pagpapakita ng ugnayan ng presyo at quantity supplied. Ito ay sa pamamagitan ng mathematical equation[cite: 12]:</p>
+                    
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem; background:#111827; padding:12px; border-radius:6px;">
+                        <div>
+                            <p style="color:#60a5fa; font-weight:600;">1. Qs = f(P)</p>
+                            <p style="color:#9ca3af; font-size:0.9rem; margin-top:5px;">
+                                <strong>Kung saan:</strong><br>
+                                Qs (quantity supplied) = ay tumatayong dependent variable<br>
+                                P (presyo) = independent variable[cite: 12]
+                            </p>
+                        </div>
+                        <div>
+                            <p style="color:#60a5fa; font-weight:600;">2. Qs = c + bP</p>
+                            <p style="color:#9ca3af; font-size:0.9rem; margin-top:5px;">
+                                <strong>Kung saan:</strong><br>
+                                Qs = dami ng suplay<br>
+                                P = presyo<br>
+                                c = intercept (bilang ng Qs kung ang presyo ay 0)<br>
+                                b = slope = $\Delta Qs / \Delta P$[cite: 12]
+                            </p>
+                        </div>
+                    </div>
+
+                    <p style="color:#d1d5db; font-size:0.95rem; line-height:1.6; margin-bottom:1rem;">
+                        Ngayon, suriin at pag-aralan natin ang kompyutasyon sa ibaba upang mapatunayan na ang relasyon ng datos ng supply schedule at ang supply function ay iisa. Gamit ang supply function mula sa supply schedule para sa kendi, kompyutin ang Qs kung: <strong>Qs = 0 + 4P</strong> (o kaya'y gamit ang halimbawa sa modyul na <strong>Qs = 0 + 10P</strong>)[cite: 12]:
+                    </p>
+
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; background:#111827; padding:12px; border-radius:6px; margin-bottom:1rem;">
+                        <div>
+                            <p style="color:#34d399; font-weight:600; margin-bottom:5px;">Kapag ang P = 1, Qs = ?[cite: 12]</p>
+                            <p style="font-family:monospace; color:#d1d5db; font-size:0.95rem; line-height:1.5;">
+                                Qs = 0 + 10P<br>
+                                Qs = 0 + 10(1)<br>
+                                Qs = 0 + 10<br>
+                                <strong>Qs = 10 piraso</strong>[cite: 12]
+                            </p>
+                        </div>
+                        <div>
+                            <p style="color:#34d399; font-weight:600; margin-bottom:5px;">Kapag ang P = 5, Qs = ?[cite: 12]</p>
+                            <p style="font-family:monospace; color:#d1d5db; font-size:0.95rem; line-height:1.5;">
+                                Qs = 0 + 10P<br>
+                                Qs = 0 + 10(5)<br>
+                                Qs = 0 + 50<br>
+                                <strong>Qs = 50 piraso</strong>[cite: 12]
+                            </p>
+                        </div>
+                    </div>
+
+                    <p style="color:#d1d5db; font-size:0.95rem; line-height:1.6;">
+                        Gamit ang supply function ay makukuha ang dami ng quantity supplied kung may ibinibigay na presyo. I-substitute lamang ang presyo sa variable na P at i-multiply ito sa slope na +10 at idagdag ang intercept na 0[cite: 12].
+                    </p>
+                </div>
+
+                <!-- B. MGA SALIK NA NAKAAAPEKTO SA SUPLAY -->
+                <h1 style="font-family:'Playfair Display'; margin:2rem 0 0.5rem 0; color:#ffffff;">B. Mga Salik na Nakaaapekto sa Suplay</h1>
+                <hr style="border-color:#374151; margin-bottom:1.5rem;">
+
+                <div class="concept-card">
+                    <p style="color:#d1d5db; line-height:1.6; margin-bottom:1rem;">
+                        Ang presyo ay ang halaga ng salapi bilang kabayaran sa produkto o serbisyo. Ito ang pangunahing salik na nakaaapekto sa suplay. Maliban sa presyo ay may iba pang salik. Ito ang mga sumusunod[cite: 13]:
+                    </p>
+
+                    <ol style="color:#d1d5db; line-height:1.8; margin-left:1.2rem; display:flex; flex-direction:column; gap:1rem;">
+                        <li>
+                            <strong style="color:#60a5fa;">Pagbabago sa Teknolohiya:</strong> Ang teknolohiya ay anumang bagay o kasangkapan na nakatutulong sa mga negosyante sa paggawa o pagbuo ng produkto. Napapabilis nito ang paggawa ng produkto o paghatid ng serbisyo. Halimbawa ng pagbabago sa teknolohiya: typewriter-word processor, Faxes-Email, telephone-cellphone; manual cars - smart cars at marami pang iba[cite: 13].
+                        </li>
+                        <li>
+                            <strong style="color:#60a5fa;">Pagbabago sa Halaga ng mga Salik sa Produksiyon:</strong> Ang paggawa (labor), materyales (materials) at makinarya (machinery/equipment) ay mga salik ng produksiyon (cost on inputs). Ang pagbaba o pagtaas ng halaga sa alin mang salik ng produksiyon ay nakaaapekto sa suplay. Kung mababa ang halaga ng produksiyon tataas ang suplay. Kung mataas ang halaga ng produksiyon mababa ang suplay[cite: 13].
+                        </li>
+                        <li>
+                            <strong style="color:#60a5fa;">Pagbabago sa Bilang ng mga Nagtitinda:</strong> Ang mga prodyuser ay naisin na gumawa ng maraming produkto kapag dumami ang nagtitinda na nagresulta sa pagtaas ng suplay. Halimbawa, ngayong nauuso ang pagkain ng ubecheese-pandesal mas maraming panaderia ang gumagawa nito dahil marami ang naingganyo na magtinda[cite: 13].
+                        </li>
+                        <li>
+                            <strong style="color:#60a5fa;">Pagbabago sa Presyo sa Kaugnay na Produkto:</strong> Ang magkaugnay na produkto ay mga produktong sabay na ginagamit tulad ng kape - asukal, gatas-kape, peanut butter - tinapay at marami pang iba. Naaapektuhan ang dami ng suplay kapag nagbabago ang presyo ng kaugnay na produkto. Halimbawa kung tumaas ang presyo ng peanut butter, dadamihan ng mga prodyuser ang paggawa nito. Kaya nagkakaroon ng pagtaas sa suplay ng peanut butter at nagdudulot ng pagbaba sa suplay ng tinapay[cite: 13].
+                        </li>
+                        <li>
+                            <strong style="color:#60a5fa;">Epektasyon ng Presyo:</strong> Ang inaasahang pagtaas ng presyo sa hinaharap ay nakaaapekto ang suplay sa kasalukuyan. Halimbawa, kung may inaasahang pagtaas ng presyo ng gasolina sa susunod na araw, babawasan nila ang suplay ng gasolina sa kasalukuyan at hintayin na tumaas ang presyo para maibenta ito sa mataas na presyo. Ang pagtatago ng produkto ay tinatawag na hoarding[cite: 13].
+                        </li>
+                    </ol>
+                </div>
+
+            </div>
+
+  <!-- PAGYAMANIN -->
+            <div id="content-pagyamanin" class="modal-section" style="display:none;">
+                <h1 style="font-family:'Playfair Display'; margin-bottom:0.5rem;">Pagyamanin</h1>
+                <p style="color:#9ca3af; margin-bottom:1.5rem;">Sagutan ang mga gawain sa ibaba.</p>
+                <hr style="border-color:#374151; margin-bottom:2rem;">
+
+                <!-- GAWAIN 1 -->
+                <h3 style="color:#60a5fa; margin-bottom:0.5rem;">Gawain 1: SA-KAT-HA (Salik-Katangian-Halimbawa)</h3>
+                <p style="color:#9ca3af; font-size:0.9rem; margin-bottom:1rem;"><strong>Panuto:</strong> Punan mo ang unang kolum ng mga salik na nakaaapekto sa suplay. Punan din ang ikalawa at ikatlong kolum ng katangian at halimbawa ng bawat salik[cite: 7].</p>
+                
+                <div style="overflow-x:auto; margin-bottom:2.5rem;">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th style="width:30%;">Iba pang Salik na Nakaaapekto sa Suplay</th>
+                                <th style="width:40%;">Katangian</th>
+                                <th style="width:30%;">Halimbawa</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Row 1 -->
+                            <tr>
+                                <td><input type="text" class="saved-input" data-id="g1_r1_c1" placeholder="Salik 1..." style="width:100%; background:#111827; border:1px solid #374151; color:#fff; padding:8px; border-radius:4px;"></td>
+                                <td><input type="text" class="saved-input" data-id="g1_r1_c2" placeholder="Katangian..." style="width:100%; background:#111827; border:1px solid #374151; color:#fff; padding:8px; border-radius:4px;"></td>
+                                <td><input type="text" class="saved-input" data-id="g1_r1_c3" placeholder="Halimbawa..." style="width:100%; background:#111827; border:1px solid #374151; color:#fff; padding:8px; border-radius:4px;"></td>
+                            </tr>
+                            <!-- Row 2 -->
+                            <tr>
+                                <td><input type="text" class="saved-input" data-id="g1_r2_c1" placeholder="Salik 2..." style="width:100%; background:#111827; border:1px solid #374151; color:#fff; padding:8px; border-radius:4px;"></td>
+                                <td><input type="text" class="saved-input" data-id="g1_r2_c2" placeholder="Katangian..." style="width:100%; background:#111827; border:1px solid #374151; color:#fff; padding:8px; border-radius:4px;"></td>
+                                <td><input type="text" class="saved-input" data-id="g1_r2_c3" placeholder="Halimbawa..." style="width:100%; background:#111827; border:1px solid #374151; color:#fff; padding:8px; border-radius:4px;"></td>
+                            </tr>
+                            <!-- Row 3 -->
+                            <tr>
+                                <td><input type="text" class="saved-input" data-id="g1_r3_c1" placeholder="Salik 3..." style="width:100%; background:#111827; border:1px solid #374151; color:#fff; padding:8px; border-radius:4px;"></td>
+                                <td><input type="text" class="saved-input" data-id="g1_r3_c2" placeholder="Katangian..." style="width:100%; background:#111827; border:1px solid #374151; color:#fff; padding:8px; border-radius:4px;"></td>
+                                <td><input type="text" class="saved-input" data-id="g1_r3_c3" placeholder="Halimbawa..." style="width:100%; background:#111827; border:1px solid #374151; color:#fff; padding:8px; border-radius:4px;"></td>
+                            </tr>
+                            <!-- Row 4 -->
+                            <tr>
+                                <td><input type="text" class="saved-input" data-id="g1_r4_c1" placeholder="Salik 4..." style="width:100%; background:#111827; border:1px solid #374151; color:#fff; padding:8px; border-radius:4px;"></td>
+                                <td><input type="text" class="saved-input" data-id="g1_r4_c2" placeholder="Katangian..." style="width:100%; background:#111827; border:1px solid #374151; color:#fff; padding:8px; border-radius:4px;"></td>
+                                <td><input type="text" class="saved-input" data-id="g1_r4_c3" placeholder="Halimbawa..." style="width:100%; background:#111827; border:1px solid #374151; color:#fff; padding:8px; border-radius:4px;"></td>
+                            </tr>
+                            <!-- Row 5 -->
+                            <tr>
+                                <td><input type="text" class="saved-input" data-id="g1_r5_c1" placeholder="Salik 5..." style="width:100%; background:#111827; border:1px solid #374151; color:#fff; padding:8px; border-radius:4px;"></td>
+                                <td><input type="text" class="saved-input" data-id="g1_r5_c2" placeholder="Katangian..." style="width:100%; background:#111827; border:1px solid #374151; color:#fff; padding:8px; border-radius:4px;"></td>
+                                <td><input type="text" class="saved-input" data-id="g1_r5_c3" placeholder="Halimbawa..." style="width:100%; background:#111827; border:1px solid #374151; color:#fff; padding:8px; border-radius:4px;"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- GAWAIN 2 -->
+                <h3 style="color:#60a5fa; margin-bottom:0.5rem;">Gawain 2: ANO ANG DESISYON MO?</h3>
+                <p style="color:#9ca3af; font-size:0.9rem; margin-bottom:1.5rem;"><strong>Panuto:</strong> Suriin ang mga sitwasyon sa bawat bilang. Isulat at ipaliwanag sa patlang ibaba ang iyong desisyon[cite: 8].</p>
+
+                <div style="display: flex; flex-direction: column; gap: 1.5rem;">
+                    <!-- Sitwasyon 1 -->
+                    <div class="concept-card" style="background:#111827; border:1px solid #374151; padding:1.2rem; border-radius:8px;">
+                        <p style="color:#d1d5db; line-height:1.6; margin-bottom:0.8rem;">
+                            <strong>1.</strong> Mayroon kang pwesto ng bigasan at marami kang nakatabing sako-sakong bigas na nabili mo lamang nang mura. Makalipas ang ilang araw, tumaas ang presyo nito. Ano ang gagawin mo[cite: 8]?
+                        </p>
+                        <textarea class="saved-input" data-id="g2_sitwasyon_1" placeholder="Ilagay ang iyong paliwanag at desisyon dito..." style="width:100%; height:90px; background:#1f2937; border:1px solid #4b5563; color:#fff; padding:10px; border-radius:6px; resize:vertical;"></textarea>
+                    </div>
+
+                    <!-- Sitwasyon 2 -->
+                    <div class="concept-card" style="background:#111827; border:1px solid #374151; padding:1.2rem; border-radius:8px;">
+                        <p style="color:#d1d5db; line-height:1.6; margin-bottom:0.8rem;">
+                            <strong>2.</strong> Tumataas ang gastos sa produksiyon dulot ng COVID-19 pandemic, hindi makapagtaas ng presyo sapagkat baka marami ang hindi na bumili sa iyo, ano ang dapat mong gawin[cite: 8]?
+                        </p>
+                        <textarea class="saved-input" data-id="g2_sitwasyon_2" placeholder="Ilagay ang iyong paliwanag at desisyon dito..." style="width:100%; height:90px; background:#1f2937; border:1px solid #4b5563; color:#fff; padding:10px; border-radius:6px; resize:vertical;"></textarea>
+                    </div>
+
+                    <!-- Sitwasyon 3 -->
+                    <div class="concept-card" style="background:#111827; border:1px solid #374151; padding:1.2rem; border-radius:8px;">
+                        <p style="color:#d1d5db; line-height:1.6; margin-bottom:0.8rem;">
+                            <strong>3.</strong> Maraming balakid na kakaharapin ang iyong negosyo. Ilan dito ang banda ng kalamidad at krisis sa kabuhayan at sa ekonomiya. Paano mo mapatatatag ang iyong negosyo[cite: 8]?
+                        </p>
+                        <textarea class="saved-input" data-id="g2_sitwasyon_3" placeholder="Ilagay ang iyong paliwanag at desisyon dito..." style="width:100%; height:90px; background:#1f2937; border:1px solid #4b5563; color:#fff; padding:10px; border-radius:6px; resize:vertical;"></textarea>
+                    </div>
+                </div>
+
+ </div> <!-- Dito nagtatapos ang Sitwasyon 3 -->
+
+        <!-- ILAGAY DITO ANG BUTTON PARA SA PAGTAPOS AT PAG-DOWNLOAD -->
+        <div style="text-align: center; margin-top: 2rem;">
+            <button onclick="submitAndDownload()" style="background: #3b82f6; color: white; border: none; padding: 12px 24px; border-radius: 6px; font-weight: bold; cursor: pointer;">
+                Tapusin at I-download ang mga Sagot (Mag-Log Out)
+            </button>
+        </div>
+
+    </div> <!-- Dito nagtatapos ang content-pagyamanin (Line 517) -->
+    <!-- Link sa JavaScript file -->
+    <script src="script.js"></script>
+</body>
+</html>
